@@ -8,7 +8,7 @@ if (filemtime("last_comments.html")!==FALSE && (time()-filemtime("last_comments.
 else
 	{
 	include("disqus_api_key.php"); //должен содержать переменную $api_key
-	$forum = 'gamesrevival-ru';
+	$forum = 'gamesrevival';
 	$limit = 5;
 
 	$url_call = "http://disqus.com/api/3.0/forums/listPosts.json?api_key=" . $api_key
