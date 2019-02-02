@@ -19,7 +19,7 @@ public class FileHelper {
 
     public static String[] getFilesList(String path) {
         var file = new File(path);
-        return file.list();
+        return file.list((current, name) -> !(new File(current, name)).isDirectory());
     }
 
     public static String getPathIfFileExists(String path) {

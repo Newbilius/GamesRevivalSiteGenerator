@@ -16,8 +16,19 @@ public class RawFilesCopier extends BasePagesGenerator {
     @Override
     protected void generateData() throws IOException {
         var rawFolder = foldersConfig.getTemplateFolder() + "RAW";
-        String[] gameDirs = FileHelper.getDirsList(rawFolder);
 
+        //корень папки
+        var rootFiles = FileHelper.getFilesList(rawFolder);
+        for (var file : rootFiles) {
+            var outputFolder = foldersConfig.getOutputFolder();
+            FileHelper.createFolder(outputFolder);
+            FileHelper.copyFile(rawFolder + "/" + file,
+                    outputFolder + file);
+        }
+
+        //вложенные директории
+
+        String[] gameDirs = FileHelper.getDirsList(rawFolder);
         for (var dir : gameDirs) {
             var filePath = rawFolder + "/" + dir;
             var files = FileHelper.getFilesList(filePath);
