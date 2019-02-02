@@ -28,7 +28,7 @@ public class UploadImagesPageGenerator extends BaseOnePageGenerator {
         var builder = new StringBuilder();
 
         var breadcrumbGenerator = new MainBreadcrumbGenerator();
-        breadcrumbGenerator.add("Загрузить скриншоты");
+        breadcrumbGenerator.add("Р—Р°РіСЂСѓР·РёС‚СЊ СЃРєСЂРёРЅС€РѕС‚С‹");
         builder.append(breadcrumbGenerator.generate());
 
         var phpCode = getTemplateFileContent("upload_images.php");
@@ -42,6 +42,6 @@ public class UploadImagesPageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - загрузить скриншоты";
+        return "Games Revival - Р·Р°РіСЂСѓР·РёС‚СЊ СЃРєСЂРёРЅС€РѕС‚С‹";
     }
 }

@@ -30,7 +30,7 @@ public class CreatePageGenerator extends BaseOnePageGenerator {
         var builder = new StringBuilder();
 
         var breadcrumbGenerator = new MainBreadcrumbGenerator();
-        breadcrumbGenerator.add("Создать модификацию");
+        breadcrumbGenerator.add("РЎРѕР·РґР°С‚СЊ РјРѕРґРёС„РёРєР°С†РёСЋ");
         builder.append(breadcrumbGenerator.generate());
 
         var dataHelpers = new DataHelpers(Games);
@@ -102,6 +102,6 @@ public class CreatePageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - создать модификацию";
+        return "Games Revival - СЃРѕР·РґР°С‚СЊ РјРѕРґРёС„РёРєР°С†РёСЋ";
     }
 }

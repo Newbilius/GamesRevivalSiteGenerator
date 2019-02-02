@@ -53,11 +53,11 @@ public class MainPageGenerator extends BaseOnePageGenerator {
                 .stream()
                 .mapToLong(game -> game.Ports.size())
                 .sum();
-        return String.format("Всего на сайте <b>%d %s</b> и <b>%d %s</b>.",
+        return String.format("Р’СЃРµРіРѕ РЅР° СЃР°Р№С‚Рµ <b>%d %s</b> Рё <b>%d %s</b>.",
                 games,
-                Helpers.plural(games, "игра", "игры", "игр"),
+                Helpers.plural(games, "РёРіСЂР°", "РёРіСЂС‹", "РёРіСЂ"),
                 portCount,
-                Helpers.plural(portCount, "мод", "мода", "модов"))
+                Helpers.plural(portCount, "РјРѕРґ", "РјРѕРґР°", "РјРѕРґРѕРІ"))
                 .replace(" ", "&nbsp;");
     }
 
@@ -95,7 +95,7 @@ public class MainPageGenerator extends BaseOnePageGenerator {
 
     private void generatePort(Game game, StringBuilder stringBuilder) {
         for (var port : game.Ports) {
-            //название и ссылка на порт
+            //РЅР°Р·РІР°РЅРёРµ Рё СЃСЃС‹Р»РєР° РЅР° РїРѕСЂС‚
             stringBuilder.append("<div class='port_block'>");
 
             stringBuilder.append(String.format("<h5><a href=%s>%s</a></h5>",
@@ -104,13 +104,13 @@ public class MainPageGenerator extends BaseOnePageGenerator {
             ));
 
             stringBuilder.append("<div class='tags_block'>");
-            //операционки
+            //РѕРїРµСЂР°С†РёРѕРЅРєРё
             for (var os : port.OS) {
                 if (!os.isBlank())
                     stringBuilder.append(BadgeGenerator.createBadge(os, BadgeType.Grey));
             }
 
-            //тэги
+            //С‚СЌРіРё
             for (var tag : port.Tags)
                 if (!tag.isBlank()) {
                     stringBuilder.append(BadgeGenerator.createBadge(tag));
@@ -122,7 +122,7 @@ public class MainPageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - новая жизнь для старых игр";
+        return "Games Revival - РЅРѕРІР°СЏ Р¶РёР·РЅСЊ РґР»СЏ СЃС‚Р°СЂС‹С… РёРіСЂ";
     }
 
     private String generateFooter() {

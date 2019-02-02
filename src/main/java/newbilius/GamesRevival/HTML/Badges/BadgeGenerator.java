@@ -8,15 +8,15 @@ public class BadgeGenerator {
 
     private static BadgeType getBadgeType(String tag) {
         var type = BadgeType.Blue;
-        if (tag.contains("не требует оригинальной игры"))
+        if (tag.contains("РЅРµ С‚СЂРµР±СѓРµС‚ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ РёРіСЂС‹"))
             type = BadgeType.Green2;
-        if (tag.contains("альфа-версия"))
+        if (tag.contains("Р°Р»СЊС„Р°-РІРµСЂСЃРёСЏ"))
             type = BadgeType.Yellow;
-        if (tag.contains("бета-версия"))
+        if (tag.contains("Р±РµС‚Р°-РІРµСЂСЃРёСЏ"))
             type = BadgeType.Yellow;
-        if (tag.contains("заброшен"))
+        if (tag.contains("Р·Р°Р±СЂРѕС€РµРЅ"))
             type = BadgeType.Red;
-        if (tag.contains("неиграбелен"))
+        if (tag.contains("РЅРµРёРіСЂР°Р±РµР»РµРЅ"))
             type = BadgeType.Red;
         if (tag.contains("sourceport"))
             type = BadgeType.Blue;

@@ -12,6 +12,10 @@ repositories {
     maven { url "https://repo.spring.io/libs-release" }
 }
 
+compileJava{
+    options.encoding = "UTF-8"
+}
+
 dependencies {
     compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
     compile group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.12.1'

@@ -47,7 +47,7 @@ public class NoScreensPagesGenerator extends BaseOnePageGenerator {
         }
 
         var breadcrumbGenerator = new MainBreadcrumbGenerator();
-        breadcrumbGenerator.add("Моды без скриншотов");
+        breadcrumbGenerator.add("РњРѕРґС‹ Р±РµР· СЃРєСЂРёРЅС€РѕС‚РѕРІ");
 
         return getTemplateFileContent("no_data.html")
                 .replace("#PAGE_TOP#", breadcrumbGenerator.generate())
@@ -56,6 +56,6 @@ public class NoScreensPagesGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - модификации без скриншотов";
+        return "Games Revival - РјРѕРґРёС„РёРєР°С†РёРё Р±РµР· СЃРєСЂРёРЅС€РѕС‚РѕРІ";
     }
 }

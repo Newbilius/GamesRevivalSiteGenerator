@@ -29,7 +29,7 @@ public class DonationGenerator extends BaseOnePageGenerator {
         var builder = new StringBuilder();
 
         var breadcrumbGenerator = new MainBreadcrumbGenerator();
-        breadcrumbGenerator.add("Ïîääåğæêà");
+        breadcrumbGenerator.add("ĞŸĞ¾Ğ´Ğ´ĞµÑ€Ğ¶ĞºĞ°");
         builder.append(breadcrumbGenerator.generate());
 
         var mdToHtmlConverter = new MDToHtmlConverter();
@@ -41,6 +41,6 @@ public class DonationGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - ïîääåğæêà";
+        return "Games Revival - Ğ¿Ğ¾Ğ´Ğ´ĞµÑ€Ğ¶ĞºĞ°";
     }
 }

@@ -73,7 +73,7 @@ public class PortsPagesGenerator extends BasePagesGenerator {
         var stringBuilder = new StringBuilder();
 
         if (!port.Link.isBlank())
-            stringBuilder.append(String.format("<h4><a href=%s>Скачать с официального сайта</a></h4><p></p>", port.Link));
+            stringBuilder.append(String.format("<h4><a href=%s>РЎРєР°С‡Р°С‚СЊ СЃ РѕС„РёС†РёР°Р»СЊРЅРѕРіРѕ СЃР°Р№С‚Р°</a></h4><p></p>", port.Link));
 
         stringBuilder.append(mdToHtmlConverter.convert(port.Files));
 

@@ -76,39 +76,39 @@ public class CommandLineArgumentsParser {
             System.out.println(getHelpTextLine(option));
     }
 
-    //выделены для потенциальной локализации
+    //РІС‹РґРµР»РµРЅС‹ РґР»СЏ РїРѕС‚РµРЅС†РёР°Р»СЊРЅРѕР№ Р»РѕРєР°Р»РёР·Р°С†РёРё
 
     @SuppressWarnings("WeakerAccess")
     protected String helpExceptionText() {
-        return "Помощь по использованию";
+        return "РџРѕРјРѕС‰СЊ РїРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЋ";
     }
 
     @SuppressWarnings("WeakerAccess")
     protected String notSettedRequiredParamExceptionText(String arg) {
-        return String.format("Не указан обязательный параметр %s", arg);
+        return String.format("РќРµ СѓРєР°Р·Р°РЅ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ %s", arg);
     }
 
     @SuppressWarnings("WeakerAccess")
     protected String notSettedParamOfOptionExceptionText(String arg) {
-        return String.format("Не указан параметр опции %s", arg);
+        return String.format("РќРµ СѓРєР°Р·Р°РЅ РїР°СЂР°РјРµС‚СЂ РѕРїС†РёРё %s", arg);
     }
 
     @SuppressWarnings("WeakerAccess")
     protected String getUnknownOptionExceptionText(String arg) {
-        return String.format("Неизвестный параметр: %s", arg);
+        return String.format("РќРµРёР·РІРµСЃС‚РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ: %s", arg);
     }
 
     @SuppressWarnings("WeakerAccess")
     protected String getHelpTextLine(CMDParserOption option) {
         return String.format("%-20s\t\t\t%s%s",
-                "-" + option.param + (option.withArgs ? " <аргумент>" : ""),
-                option.required ? "[обязательный] " : "",
+                "-" + option.param + (option.withArgs ? " <Р°СЂРіСѓРјРµРЅС‚>" : ""),
+                option.required ? "[РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Р№] " : "",
                 option.description);
     }
 
     @SuppressWarnings("WeakerAccess")
     protected void printHelpHeader() {
-        System.out.println("Параметры:");
+        System.out.println("РџР°СЂР°РјРµС‚СЂС‹:");
     }
 }
 

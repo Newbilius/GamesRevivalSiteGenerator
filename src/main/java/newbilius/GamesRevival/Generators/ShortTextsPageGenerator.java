@@ -47,7 +47,7 @@ public class ShortTextsPageGenerator extends BaseOnePageGenerator {
         }
 
         var breadcrumbGenerator = new MainBreadcrumbGenerator();
-        breadcrumbGenerator.add("Моды со слишком коротким описанием");
+        breadcrumbGenerator.add("РњРѕРґС‹ СЃРѕ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёРј РѕРїРёСЃР°РЅРёРµРј");
 
         return getTemplateFileContent("no_data.html")
                 .replace("#PAGE_TOP#", breadcrumbGenerator.generate())
@@ -56,6 +56,6 @@ public class ShortTextsPageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - моды со слишком коротким описанием";
+        return "Games Revival - РјРѕРґС‹ СЃРѕ СЃР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёРј РѕРїРёСЃР°РЅРёРµРј";
     }
 }
