@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+version '1.0'
+
+mainClassName = "newbilius.GamesRevival.Application"
+
+sourceCompatibility = 1.11
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.11'
+    compile group: 'com.atlassian.commonmark', name: 'commonmark', version: '0.12.1'
+    compile group: 'com.atlassian.commonmark', name: 'commonmark-ext-gfm-tables', version: '0.12.1'
+    compile "com.google.code.gson:gson:2.8.0"
+}
+
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    archiveName = 'GamesRevival.jar'
+
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
