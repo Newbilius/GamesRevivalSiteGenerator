@@ -1,0 +1,32 @@
+    body {
+      padding-top: 5rem;
+    }
+    div.card-header {
+      font-size: 1.6em;
+    }
+    div.card{
+      margin-bottom: 20px;
+    }
+    div.card-body{
+      font-size: 1.1em;
+    }
+    span.badge{
+      display: inline;
+      line-height:2.5;
+    }
+        div#tag_filter div.card-body{
+      line-height: 1.12em;
+    }
+        div.port_block{
+                margin-bottom:10px;
+        }
+        @media screen and (min-width: 540px) {
+                .embed-responsive-gamesrevival-video {
+                        display: inline-block !important;
+                        width: 49% !important;
+                }
+        }
+        div#form_block{
+      line-height: 1.12em;
+    }
+

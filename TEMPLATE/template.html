@@ -16,46 +16,7 @@
   
   <title>#TITLE#</title>
 
-  <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-    crossorigin="anonymous">-->
-  <link rel="stylesheet" href="/css/ekko-lightbox.css" />
-
-  <style>
-    body {
-      padding-top: 5rem;
-    }
-    div.card-header {
-      font-size: 1.6em;
-    }
-    div.card{
-      margin-bottom: 20px;
-    }
-    div.card-body{
-      font-size: 1.1em;
-    }
-    span.badge{
-      display: inline;
-      line-height:2.5;
-    }
-	div#tag_filter div.card-body{
-      line-height: 1.12em;
-    }
-	div.port_block{
-		margin-bottom:10px;
-	}
-	@media screen and (min-width: 540px) {
-		.embed-responsive-gamesrevival-video {
-			display: inline-block !important;
-			width: 49% !important;
-		}
-	}
-	div#form_block{
-      line-height: 1.12em;
-    }
-
-	</style>
-
+  <script src='/dist/bundle.js'></script>
 </head>
 
 <body>
@@ -163,15 +124,7 @@
 	</div>
   </main>
   
-  <script src="/js/jquery-3.3.1.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-
-  <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-    crossorigin="anonymous"></script>-->
 	
-	
-<script src="/js/ekko-lightbox.min.js"></script>
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?160"></script>
 <script type="text/javascript">
 <!-- mode: 4 поставлю позже, когда будет больше участников и новости -->
@@ -193,45 +146,6 @@ VK.Widgets.Group("vk_group", {mode: 3, width: "auto"}, 177669210);
   
 #JS#
 
-<script>
-function getRandomImage(gameTitle, link, imgLink){			
-	$('#random_img_href1 img').attr('src',imgLink);
-	$('#random_img_href1').attr('href',link);
-	var textHref=$('#random_img_href2');
-	textHref.attr('href',link);
-	textHref.text(gameTitle);
-	
-	
-	$('#random_img_href1').show();
-	$('#random_img_title').show();
-	$('#random_img_loading_animation').hide();
-}
-		
-$(document).ready(function () {
-	  $.ajax({
-		url: '/random_ports.json',
-		dataType: 'json',
-		success: function( data ) {
-			var game = data[Math.floor(Math.random()*data.length)];
-			getRandomImage(game.Title,game.Url,game.ImgLink);
-		}
-	  });
-	  
-	 $.get( "/last_comments/index.php", function( data ) {
-	   var lastCommentsBlock = $('#last_comments');
-	   lastCommentsBlock.html(data);
-	   lastCommentsBlock.show();
-	   $('#last_comments_loading_animation').hide();
-	 });
-	 
-	 $.get( "/updates.html", function( data ) {
-	   var lastCommentsBlock = $('#last_updates');
-	   lastCommentsBlock.html(data);
-	   lastCommentsBlock.show();
-	   $('#last_updates_loading_animation').hide();
-	 });
-});
-</script>
 
 <script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
 <script src="//yastatic.net/share2/share.js"></script>

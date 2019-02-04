@@ -1,0 +1,24 @@
+{
+  "name": "gamesrevival",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.2.1",
+    "css-loader": "^2.1.0",
+    "ekko-lightbox": "^5.3.0",
+    "expose-loader": "^0.7.5",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "style-loader": "^0.23.1",
+    "terser": "3.14.1",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
