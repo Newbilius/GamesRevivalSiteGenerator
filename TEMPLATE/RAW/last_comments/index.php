@@ -2,7 +2,7 @@
 $cacheFileName = "last_comments.html";
 $maxCommentLength = 120;
 
-if (filemtime("last_comments.html")!==FALSE && (time()-filemtime("last_comments.html"))<120){ //раз в 2 минуты обновляем свежие комменты
+if (filemtime("last_comments.html")!==FALSE && (time()-filemtime("last_comments.html"))<600){ //раз в 10 минуты обновляем свежие комменты
 		echo file_get_contents($cacheFileName);
 	}
 else
@@ -43,7 +43,12 @@ else
 </p>";
 		}
 	
-	file_put_contents($cacheFileName, $html);
-	echo $html;
+	if (strlen($html) > 10)	
+		{
+			file_put_contents($cacheFileName, $html);
+			echo $html;
+		}
+		else
+			echo file_get_contents($cacheFileName);
 }
 ?>
