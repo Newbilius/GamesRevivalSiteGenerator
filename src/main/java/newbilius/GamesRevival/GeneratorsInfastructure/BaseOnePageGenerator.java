@@ -13,9 +13,9 @@ public abstract class BaseOnePageGenerator extends BasePagesGenerator {
 
     @Override
     public void generateData() throws IOException {
-        var jsFileName = getJSFileName();
         var jsContent = "";
-        if (!jsFileName.isEmpty())
+        var jsFileName = getJSFileName();
+        if (jsFileName != null && !jsFileName.isEmpty())
             jsContent = getTemplateFileContent(jsFileName);
 
         var text = setJS(template, jsContent);
