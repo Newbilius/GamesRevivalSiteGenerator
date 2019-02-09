@@ -5,7 +5,7 @@ $(document).ready(function () {
 	$('tr.game_line').each(function () {
 	  var _this = $(this);
 	  var items=_this.find('td');
-	  var title = (items.eq(0).text()).toLowerCase();
+	  var title = (items.eq(1).text()).toLowerCase();
 
 	  if (title.indexOf(filter) < 0) {
 		_this.hide();

@@ -1,12 +1,11 @@
 package newbilius.GamesRevival.Generators;
 
+import newbilius.GamesRevival.Data.Game;
 import newbilius.GamesRevival.Data.Port;
-import newbilius.GamesRevival.FileHelper;
 import newbilius.GamesRevival.FoldersConfig;
 import newbilius.GamesRevival.GeneratorsInfastructure.BaseOnePageGenerator;
 import newbilius.GamesRevival.GeneratorsInfastructure.RelativePathHelper;
 import newbilius.GamesRevival.HTML.Breadcrumbs.MainBreadcrumbGenerator;
-import newbilius.GamesRevival.HTML.MDToHtmlConverter;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,12 +32,19 @@ public class GamesListPageGenerator extends BaseOnePageGenerator {
         var builder = new StringBuilder();
         for (var game : Games) {
             builder.append(String.format("<tr class=\"game_line\">" +
-                            "<td style=\"min-width:200px\">" +
-                            "<a href=%s>%s</a></td>" +
-                            "<td>%s</td></tr>",
+                                "<td>" +
+                                    "<a href=%s>" +
+                                        "<img src=%s width=150>" +
+                                    "</a>" +
+                                "</td>" +
+                                "<td>" +
+                                        "<a href=%s><h5>%s</h5></a>" +
+                                "</td>" +
+                            "</tr>",
                     RelativePathHelper.getPath(game),
-                    game.getTitle(),
-                    getModsList(game.Ports)
+                    getGameCoverUrl(game),
+                    RelativePathHelper.getPath(game),
+                    game.getTitle()
                     )
             );
         }
@@ -51,12 +57,12 @@ public class GamesListPageGenerator extends BaseOnePageGenerator {
                 .replace("#TABLE#", builder.toString());
     }
 
-    private String getModsList(List<Port> ports) {
-        var portsString = ports
-                .stream()
-                .map(port -> port.Title.replace(" ", "&nbsp;"))
-                .toArray(String[]::new);
-        return String.join(", ", portsString);
+    private String getGameCoverUrl(Game game) {
+        if (game.LogoPath.isBlank())
+            return "/img/none_image.jpg";
+
+        //todo "logo.jpg" дублируется в двух местах, поправить
+        return "/" + RelativePathHelper.getPath(game) + "logo.jpg";
     }
 
     @Override
