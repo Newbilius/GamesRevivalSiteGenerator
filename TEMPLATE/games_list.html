@@ -1,14 +1,15 @@
 #PAGE_TOP#
-<form>
-  <div class="form-group">
-	<input class="form-control form-control-lg" type="text" id="filter" placeholder="Фильтр по имени игры">
-  </div>
-</form>
+<div class="form-inline">
+	<input class="form-control form-control-lg flex-fill mr-2" type="text" id="filter" placeholder="Фильтр по имени игры">
+	<button id="button_hide_images" type="button" class="btn btn-primary collapse.show my-2">Скрыть обложки</button>
+	<button id="button_show_images" type="button" class="btn btn-danger collapse my-2">Показать обложки</button>
+</div>
+<br>
 
 <table class='table table-bordered table-hover'>
 	<thead>
 		<tr>
-			<th scope='col' class="col-1"><h5>Обложка</h5></th>
+			<th scope='col' class="col-1 game_image_block"><h5>Обложка</h5></th>
 			<th scope='col'><h5>Игра</h5></th>
 		</tr>
 	</thead>

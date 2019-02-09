@@ -32,7 +32,7 @@ public class GamesListPageGenerator extends BaseOnePageGenerator {
         var builder = new StringBuilder();
         for (var game : Games) {
             builder.append(String.format("<tr class=\"game_line\">" +
-                                "<td>" +
+                                "<td class='game_image_block'>" +
                                     "<a href=%s>" +
                                         "<img src=%s width=150>" +
                                     "</a>" +

@@ -15,5 +15,21 @@ $(document).ready(function () {
 	  }
 	});
   });
+  
+	$("#button_hide_images").click(function () {
+		$(this).hide();
+		$("#button_show_images").show();
+		$('.game_image_block').each(function () {
+				$(this).hide();
+			});
+	});
+
+	$("#button_show_images").click(function () {
+		$(this).hide();
+		$("#button_hide_images").show();
+		$('.game_image_block').each(function () {
+				$(this).show();
+			});
+	});
 });
 </script>
