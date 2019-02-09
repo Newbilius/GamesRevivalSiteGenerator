@@ -32,7 +32,7 @@ public class MainPageGenerator extends BaseOnePageGenerator {
     protected String getContent() throws IOException {
         var stringBuilder = new StringBuilder();
 
-        var header = getTemplateFileContent("main_header.html");
+        var header = getTemplateFileContent("main.html");
 
         header = header.replaceFirst("#FILTER_TAGS#", getHeaderFilterTags())
                 .replaceFirst("#GAMES_COUNT#", getGamesCount());
@@ -130,7 +130,7 @@ public class MainPageGenerator extends BaseOnePageGenerator {
     }
 
     private String generateHeader(Game game) {
-        return String.format("<div class='card game_card'>\n" +
+        return String.format("<div class='card game_card' style='display:none;'>\n" +
                         "<div class='card-header'>\n" +
                         "<a href=%s>%s</a>\n" +
                         "</div>\n" +
