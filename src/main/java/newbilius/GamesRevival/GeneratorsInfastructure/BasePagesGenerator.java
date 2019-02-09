@@ -25,12 +25,18 @@ public abstract class BasePagesGenerator implements ISiteGenerator {
 
         Games = games;
         var templateFilePath = foldersConfig.getTemplateFolder() + "template.html";
-        template = FileHelper.getFileText(templateFilePath);
+        template = FileHelper
+                .getFileText(templateFilePath)
+                .replace("#RIGHT_BLOCK#", getRightBlockContent());
         if (template.isBlank()) {
             Helpers.print("TEMPLATE NOT FOUND! " + templateFilePath);
             System.exit(1);
         }
         generateData();
+    }
+
+    protected String getRightBlockContent() throws IOException {
+        return getTemplateFileContent("right_block.html");
     }
 
     protected abstract void generateData() throws IOException;

@@ -30,13 +30,23 @@ public class MainPageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getContent() throws IOException {
+        var data = getTemplateFileContent("main.html");
+
+        data = data
+                .replaceFirst("#FILTER_TAGS#", getHeaderFilterTags())
+                .replaceFirst("#GAMES_COUNT#", getGamesCount())
+                .replace("#GAMES_DATA#", getGamesData());
+
+        return data;
+    }
+
+    @Override
+    protected String getRightBlockContent() {
+        return "";
+    }
+
+    private String getGamesData() {
         var stringBuilder = new StringBuilder();
-
-        var header = getTemplateFileContent("main.html");
-
-        header = header.replaceFirst("#FILTER_TAGS#", getHeaderFilterTags())
-                .replaceFirst("#GAMES_COUNT#", getGamesCount());
-        stringBuilder.append(header);
 
         for (var game : Games) {
             stringBuilder.append(generateHeader(game));
