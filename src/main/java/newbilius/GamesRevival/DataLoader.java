@@ -57,6 +57,8 @@ class DataLoader {
         port.Redirect = FileHelper.getFileText(portFullDir + "/redirect.txt");
         port.ImagesPath = new String[0];
 
+        port.Video = Helpers.removeEmptyLines(port.Video);
+
         for (int i = 0; i < port.Tags.length; i++) {
             port.Tags[i] = port.Tags[i].strip().toLowerCase();
         }
