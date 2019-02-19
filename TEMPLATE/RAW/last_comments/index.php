@@ -35,11 +35,9 @@ else
 				$text = $str[0]."...";
 			}
 			
-			$html.="<p><a href='{$comment->url}'>{$comment->author->name}</a>
-<br>({$dateFormatted})
-<br>
-{$text}
-<br><a href='{$comment->thread->link}'>{$comment->thread->clean_title}</a>
+			$html.="<p><a href='{$comment->thread->link}'>{$comment->thread->clean_title}</a> ({$dateFormatted})
+<br>{$text}
+<br>(<a href='{$comment->url}'>{$comment->author->name}</a>)
 </p>";
 		}
 	
