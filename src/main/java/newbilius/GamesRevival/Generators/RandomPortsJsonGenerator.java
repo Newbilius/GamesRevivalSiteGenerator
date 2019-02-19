@@ -28,7 +28,7 @@ public class RandomPortsJsonGenerator extends BasePagesGenerator {
         Collections.shuffle(ports, new Random());
 
         var randomPorts = ports.stream()
-                .limit(200)
+                .limit(300)
                 .map(port -> new RandomPortsJsonGenerator.RandomGame(port.Title,
                         "/" + RelativePathHelper.getPath(port),
                         PortScreensHTMLGenerator.getImageUrl(port, port.ImagesPath[0])
