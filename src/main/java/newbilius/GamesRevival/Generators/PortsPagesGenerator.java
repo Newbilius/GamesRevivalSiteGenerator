@@ -36,12 +36,22 @@ public class PortsPagesGenerator extends BasePagesGenerator {
                         port.Title));
                 text = setContent(text, getContent(portTemplate, game, port, mdToHtmlConverter));
 
+                if (port.ImagesPath.length > 0)
+                    text = setSocialImage(text, PortScreensHTMLGenerator.getImageUrl(port, port.ImagesPath[0]));
+                else
+                    text = setSocialImage(text);
+
                 var path = foldersConfig.getOutputFolder() + "/" + RelativePathHelper.getPath(port);
 
                 FileHelper.createFolder(path);
                 FileHelper.writeStringToFile(path + "index.html", text);
             }
         }
+    }
+
+    @Override
+    protected boolean needAutoSetSocialImage() {
+        return false;
     }
 
     private String getContent(String portTemplate, Game game, Port port, MDToHtmlConverter mdToHtmlConverter) throws IOException {
@@ -64,6 +74,7 @@ public class PortsPagesGenerator extends BasePagesGenerator {
                 .replace("#PORT_LINKS#", getLinks(port, mdToHtmlConverter))
                 .replace("#EDIT_LINK#", RelativePathHelper.getEditUrl(port))
                 .replace("#ADD_SCREENS_TO_MOD#", RelativePathHelper.getAddScreensUrl(port));
+
         builder.append(portHTML);
 
         return builder.toString();

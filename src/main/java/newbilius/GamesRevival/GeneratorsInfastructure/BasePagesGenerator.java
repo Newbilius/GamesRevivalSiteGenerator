@@ -32,6 +32,9 @@ public abstract class BasePagesGenerator implements ISiteGenerator {
             Helpers.print("TEMPLATE NOT FOUND! " + templateFilePath);
             System.exit(1);
         }
+        if (needAutoSetSocialImage())
+            template = setSocialImage(template);
+
         generateData();
     }
 
@@ -43,6 +46,18 @@ public abstract class BasePagesGenerator implements ISiteGenerator {
 
     protected String setTitle(String text, String title) {
         return text.replaceFirst("#TITLE#", title);
+    }
+
+    protected boolean needAutoSetSocialImage() {
+        return true;
+    }
+
+    protected String setSocialImage(String text) {
+        return text.replaceFirst("#SOCIAL_IMAGE#", "/img2/GamesRevival_SocialLogo.jpg");
+    }
+
+    protected String setSocialImage(String text, String fileName) {
+        return text.replaceFirst("#SOCIAL_IMAGE#", fileName);
     }
 
     protected String setContent(String text, String content) {
