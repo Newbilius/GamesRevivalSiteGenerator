@@ -32,9 +32,18 @@ public class GamesPagesGenerator extends BasePagesGenerator {
             var text = setJS(template, getTemplateFileContent("game_js.html"));
             text = setTitle(text, "Games Revival - " + game.getTitle());
             text = setContent(text, getContent(game, mdToHtmlConverter));
+            if (game.LogoPath.isBlank())
+                text = setSocialImage(text);
+            else
+                text = setSocialImage(text, "/" + RelativePathHelper.getPath(game) + "logo.jpg");
 
             FileHelper.writeStringToFile(path + "index.html", text);
         }
+    }
+
+    @Override
+    protected boolean needAutoSetSocialImage() {
+        return false;
     }
 
     private String getContent(Game game, MDToHtmlConverter mdToHtmlConverter) throws IOException {
