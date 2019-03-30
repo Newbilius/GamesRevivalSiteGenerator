@@ -22,7 +22,7 @@ public class BadgeGenerator {
             type = BadgeType.Blue;
         if (tag.contains("mod"))
             type = BadgeType.Green;
-        if (tag.contains("remaster"))
+        if (tag.contains("официальный remaster"))
             type = BadgeType.Black;
         return type;
     }

@@ -12,7 +12,7 @@ public class DataHelpers {
     }
 
     public String[] getTags() {
-        var firstTags = new String[]{"sourceport", "remaster", "mod"};
+        var firstTags = new String[]{"sourceport", "официальный remaster", "mod"};
         return Stream.concat(Arrays.stream(firstTags),
                 Games
                         .stream()
