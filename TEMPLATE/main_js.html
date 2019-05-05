@@ -16,6 +16,8 @@ $(document).ready(function () {
 
 		var filter = $("#filter").val().toLowerCase();
 
+		var visibleGameCounter = 0;
+		
 		$('div.game_card').each(function () {
 			var game = $(this);
 			var gameVisible = false;
@@ -60,12 +62,18 @@ $(document).ready(function () {
 			if (selectedTagsForFilter.length == 0 && filter.length == 0)
 				gameVisible = false;
 			
-			if (gameVisible)
+			if (gameVisible) {
 				game.show();
+				visibleGameCounter++;
+			}
 			else
 				game.hide();
 
 		});
+		if (visibleGameCounter == 0 && filter.length > 0)
+			$('div#try_utilities_block').show();
+		else
+			$('div#try_utilities_block').hide();
 	}
 
 	$('div#tag_filter').find(":checkbox").change(function () {

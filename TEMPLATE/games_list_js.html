@@ -2,6 +2,8 @@
 $(document).ready(function () {
   $('#filter').keyup(function () {
 	var filter = $("#filter").val().toLowerCase();
+	var visibleGameCounter = 0;
+	
 	$('tr.game_line').each(function () {
 	  var _this = $(this);
 	  var items=_this.find('td');
@@ -11,9 +13,15 @@ $(document).ready(function () {
 		_this.hide();
 	  }
 	  if (title.indexOf(filter) >= 0) {
+		 visibleGameCounter++;
 		_this.show();
 	  }
 	});
+	
+	if (visibleGameCounter == 0 && filter.length > 0)
+		$('div#try_utilities_block').show();
+	else
+		$('div#try_utilities_block').hide();
   });
   
 	$("#button_hide_images").click(function () {
