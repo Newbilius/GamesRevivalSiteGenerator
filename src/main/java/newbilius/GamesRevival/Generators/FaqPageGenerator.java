@@ -3,6 +3,7 @@ package newbilius.GamesRevival.Generators;
 import newbilius.GamesRevival.FileHelper;
 import newbilius.GamesRevival.FoldersConfig;
 import newbilius.GamesRevival.GeneratorsInfastructure.BaseOnePageGenerator;
+import newbilius.GamesRevival.HTML.EditMenuGenerator;
 import newbilius.GamesRevival.HTML.MDToHtmlConverter;
 import newbilius.GamesRevival.HTML.Breadcrumbs.MainBreadcrumbGenerator;
 
@@ -37,6 +38,9 @@ public class FaqPageGenerator extends BaseOnePageGenerator {
         var faqData = FileHelper.getFileText(foldersConfig.getInputFolder() + "faq.md");
         var text = mdToHtmlConverter.convert(faqData);
         builder.append(text);
+
+        builder.append(EditMenuGenerator.getBlock("faq.md"));
+
         return builder.toString();
     }
 
