@@ -38,6 +38,6 @@ public class Error404PageGenerator extends BaseOnePageGenerator {
 
     @Override
     protected String getTitle() {
-        return "Games Revival - FAQ";
+        return "Games Revival - 404";
     }
 }
