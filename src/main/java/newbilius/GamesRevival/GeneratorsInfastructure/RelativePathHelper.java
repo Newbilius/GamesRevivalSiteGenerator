@@ -30,6 +30,10 @@ public class RelativePathHelper {
         return editBaseUrl + port.Path;
     }
 
+    public static String getEditUrl(String path) {
+        return editBaseUrl + path;
+    }
+
     public static String getAddScreensUrl(Port port) {
         var pathPart = port.Path.split("/");
         return String.format("/upload.php?ModName=%s&GameId=%s&ModeId=%s",
