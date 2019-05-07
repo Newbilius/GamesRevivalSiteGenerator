@@ -190,7 +190,7 @@ $(document).ready(function () {
 	});
 
 	  $.ajax({
-		url: '/random_ports.json',
+		url: '/random_ports.json?timestamps='+Date.now(),
 		dataType: 'json',
 		success: function( data ) {
 			var game = data[Math.floor(Math.random()*data.length)];
@@ -205,7 +205,7 @@ $(document).ready(function () {
 	   $('#last_comments_loading_animation').hide();
 	 });
 	 
-	 $.get( "/updates.html", function( data ) {
+	 $.get( "/updates.html?timestamps="+Date.now(), function( data ) {
 	   var lastCommentsBlock = $('#last_updates');
 	   lastCommentsBlock.html(data);
 	   lastCommentsBlock.show();
