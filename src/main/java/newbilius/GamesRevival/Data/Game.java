@@ -5,6 +5,7 @@ import java.util.List;
 public class Game {
     public String[] Title;
     public String Links;
+    public String About;
     public String[] OldGames;
     public String LogoPath;
     public String Path;

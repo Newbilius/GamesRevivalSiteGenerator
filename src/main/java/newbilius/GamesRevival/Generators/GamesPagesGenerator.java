@@ -55,6 +55,7 @@ public class GamesPagesGenerator extends BasePagesGenerator {
 
         var portTemplate = getTemplateFileContent("game.html")
                 .replace("#LINKS#", mdToHtmlConverter.convert(game.Links))
+                .replace("#ABOUT#", mdToHtmlConverter.convert(game.About))
                 .replace("#TITLE#", game.getTitleBR())
                 .replace("#IMG#", getImage(game))
                 .replace("#DATA#", getPorts(game.Ports))

@@ -100,6 +100,7 @@ class DataLoader {
         var gameFullDir = foldersConfig.getInputFolder() + "/" + gameDir;
         game.Path = gameDir;
         game.Links = FileHelper.getFileText(gameFullDir + "/links.md");
+        game.About = FileHelper.getFileText(gameFullDir + "/about.md");
         game.OldGames = FileHelper.getFileLines(gameFullDir + "/old_games.txt");
         game.Title = FileHelper.getFileLines(gameFullDir + "/title.txt");
         game.LogoPath = FileHelper.getPathIfFileExists(gameFullDir + "/logo.jpg");
