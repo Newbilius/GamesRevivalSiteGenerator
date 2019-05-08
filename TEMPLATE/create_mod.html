@@ -12,6 +12,7 @@
 	<input type="hidden" id="GameId" name="GameId" value="<?=$_REQUEST['GameId']?>">
 	<input type="hidden" id="modOSSelected" name="modOSSelected" value="<?=implode(',',$_POST['modOS'])?>">
 	<input type="hidden" id="modTagsSelected" name="modTagsSelected" value="<?=implode(',',$_POST['modTags'])?>">
+	<input type="hidden" id="gameGenresSelected" name="gameGenresSelected" value="<?=implode(',',$_POST['gameGenres'])?>">
 	
 	<div class="card">
 		<div class="card-body" id="form_block">
@@ -31,6 +32,17 @@
 			<div class="form-group">
 				<label>Название игры</label>
 				<input class="form-control" name="gameTitle" value="<?=$_POST['gameTitle']?>">
+			</div>
+			
+			<div class="form-group">
+				<label>Жанр</label><br>
+
+				#GENRES_ITEMS#
+			</div>
+
+			<div class="form-group">
+				<label>Новые жанры (через запятую)</label>
+				<input class="form-control" name="gameNewGenres" id="gameNewGenres" value="<?=$_POST['gameNewGenres']?>">
 			</div>
 			
 			<div class="form-group">

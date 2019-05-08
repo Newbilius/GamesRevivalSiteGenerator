@@ -40,6 +40,7 @@ public class CreatePageGenerator extends BaseOnePageGenerator {
                 .replace("#GAMES_ITEMS#", getGamesList())
                 .replace("#OS_ITEMS#", getOSList(dataHelpers))
                 .replace("#TAG_ITEMS#", getTagsList(dataHelpers))
+                .replace("#GENRES_ITEMS#", getGenresList(dataHelpers))
                 .replace("#FILE_NAME#", getFileName())
                 .replace("#PHP#", phpCode);
 
@@ -66,6 +67,17 @@ public class CreatePageGenerator extends BaseOnePageGenerator {
         var osList = dataHelpers.getOS();
         for (String os : osList) {
             builder.append(createCheckbox("modOS[]", os));
+        }
+
+        return builder.toString();
+    }
+
+    private String getGenresList(DataHelpers dataHelpers) {
+        var builder = new StringBuilder();
+
+        var genres = dataHelpers.getGenres();
+        for (String genre : genres) {
+            builder.append(createCheckbox("gameGenres[]", genre));
         }
 
         return builder.toString();

@@ -191,7 +191,7 @@ $api = new GitHubApi($username, $password, "Newbilius", "GamesRevival");
 
 function prepareAllPosts(){
 	preparePosts(array("gameTitle", "gameLinks",
-		"modTitle", "modAbout", "modLinks", "modNewOS", "modNewTags", "modVideo"
+		"modTitle", "modAbout", "modLinks", "modNewOS", "modNewTags", "modVideo", "gameNewGenres"
 	));
 }
 
@@ -201,6 +201,8 @@ if (!isset($_POST['modOS']))
 	$_POST['modOS']= array();
 if (!isset($_POST['modTags']))
 	$_POST['modTags']= array();
+if (!isset($_POST['gameGenres']))
+	$_POST['gameGenres']= array();
 
 $errors = array();
 $success = false;
@@ -243,6 +245,9 @@ if (!empty($_POST['formPosted'])){
 	if (empty($_POST['modTags']) && empty($_POST['modNewTags']))
 		$errors[] = "Нужно указать хотя бы один тег, например - с типом модификации (sourceport/mod/remaster и т.п.)";
 	
+	if ($_POST['gameSelector']==="NULL" && empty($_POST['gameNewGenres']) && empty($_POST['gameGenres']))
+		$errors[] = "Нужно указать хотя бы один жанр игры";
+	
 	if (empty($errors)){
 		$modLinkValues = splitArrayToLinksList(splitTextareaToArray($_POST['modLinks']));
 		
@@ -255,6 +260,7 @@ if (!empty($_POST['formPosted'])){
 	if (empty($errors)){
 		$newTagsArray = array();
 		$newOSArray = array();
+		$newGenresArray = array();
 		
 		if (!empty($_POST['modNewTags']))
 		{
@@ -272,9 +278,19 @@ if (!empty($_POST['formPosted'])){
 			}
 			$newOSArray = array_filter($newOSTemp);
 		}
+		if (!empty($_POST['gameNewGenres']))
+		{
+			$newGenresTemp = explode(",",$_POST['gameNewGenres']);
+			foreach ($newGenresTemp as $genreNumber => $tmpGenres){
+				$tmpGenres[$genreNumber] = trim($tmpGenres);
+			}
+			$newGenresArray = array_filter($newGenresTemp);
+		}
+		
 		
 		$os = implode(PHP_EOL, array_merge($newOSArray, $_POST['modOS']));
 		$tags = implode(PHP_EOL, array_merge($newTagsArray, $_POST['modTags']));
+		$genres = implode(PHP_EOL, array_merge($newGenresArray, $_POST['gameGenres']));
 		
 		$gameLinkValues = splitArrayToLinksList(splitTextareaToArray($_POST['gameLinks']));
 		
@@ -295,8 +311,12 @@ if (!empty($_POST['formPosted'])){
 			foreach ($gameLinkValues as $linkName => $linkValue){
 				$links = $links."[{$linkName}]({$linkValue})".$br.$br;
 			}
-			if (strlen($links)>15)
+			if (strlen($links)>10)
 				$api -> CreateFile($branchName, "DATA/{$gameFolder}/links.md", $links);	
+			
+			//создаём файл с жанрами
+			if (strlen($genres)>2)
+				$api -> CreateFile($branchName, "DATA/{$gameFolder}/genre.txt", $genres);
 			
 			//загружаем логотип
 			$gameLogo = getFileDataOrNull("gameFileLogo");
@@ -349,7 +369,8 @@ if (!empty($_POST['formPosted'])){
 			}
 		}
 		
-		$api -> CreatePullRequest($branchName, "Добавлен мод {$_POST['modTitle']} для {$gameFolder}");
+		$gameName = str_replace("_"," ",$gameFolder);
+		$api -> CreatePullRequest($branchName, "Добавлен мод {$_POST['modTitle']} для {$gameName}");
 		
 		//complete
 		$success = true;
