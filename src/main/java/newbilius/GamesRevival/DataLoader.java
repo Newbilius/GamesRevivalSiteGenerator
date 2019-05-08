@@ -103,6 +103,7 @@ class DataLoader {
         game.About = FileHelper.getFileText(gameFullDir + "/about.md");
         game.OldGames = FileHelper.getFileLines(gameFullDir + "/old_games.txt");
         game.Title = FileHelper.getFileLines(gameFullDir + "/title.txt");
+        game.Genre = FileHelper.getFileLines(gameFullDir + "/genre.txt");
         game.LogoPath = FileHelper.getPathIfFileExists(gameFullDir + "/logo.jpg");
         game.Ports = new ArrayList<>(1);
         return game;

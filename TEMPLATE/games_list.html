@@ -4,13 +4,25 @@
 	<button id="button_hide_images" type="button" class="btn btn-primary collapse my-2">Скрыть обложки</button>
 	<button id="button_show_images" type="button" class="btn btn-success collapse.show my-2">Показать обложки</button>
 </div>
-<br>
+
+</br>
+<div class="form-group">
+	<div class='card' id="tag_filter">
+		<div class='card-body' id="genre_filter">
+			<h4 style="margin-bottom:12px;">Показывать только выбранные жанры</h4>
+			#FILTER#
+			<button id="button_clear_genres" type="button" class="btn btn-danger collapse my-2">Сбросить выбранные жанры</button>
+		</div>
+	</div>
+</div>
+
 
 <table class='table table-bordered table-hover'>
 	<thead>
 		<tr>
 			<th class="game_image_block" style="width:180px; max-width: 180px; display: none;"><h5>Обложка</h5></th>
-			<th ><h5>Игра</h5></th>
+			<th><h5>Игра</h5></th>
+			<th><h5>Жанр</h5></th>
 		</tr>
 	</thead>
 	<tbody>

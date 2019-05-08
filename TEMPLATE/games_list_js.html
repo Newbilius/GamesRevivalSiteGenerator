@@ -1,29 +1,75 @@
 <script>
 $(document).ready(function () {
-  $('#filter').keyup(function () {
-	var filter = $("#filter").val().toLowerCase();
-	var visibleGameCounter = 0;
-	
-	$('tr.game_line').each(function () {
-	  var _this = $(this);
-	  var items=_this.find('td');
-	  var title = (items.eq(1).text()).toLowerCase();
-
-	  if (title.indexOf(filter) < 0) {
-		_this.hide();
-	  }
-	  if (title.indexOf(filter) >= 0) {
-		 visibleGameCounter++;
-		_this.show();
-	  }
+	$('#filter').keyup(function () {
+		filterGames();
 	});
+
+	$('div#genre_filter').find(":checkbox").change(function () {
+		filterGames();
+	});
+
+	function filterGames() {
+		var filter = $("#filter").val().toLowerCase();
+		var clearGenres = $("#button_clear_genres")
+		
+		var gameVisible = false;
+		var selectedGenres = 0;
+		var visibleGameCounter = 0;
+		
+		var selectedGenresForFilter = $('div#genre_filter')
+			.find(":checked")
+			.map(function () {
+
+				return $(this).val().toLowerCase();
+			});
+		if (selectedGenresForFilter.length > 0)
+				clearGenres.show()
+			else
+				clearGenres.hide()
+		
+		$('tr.game_line').each(function () {
+		var game = $(this);
+		var items = game.find('td');
+		var title = (items.eq(1).text()).toLowerCase();
+		var genres = (items.eq(2).text()).toLowerCase();
+
+			//ищем по имени игры
+			if (filter.length == 0 || title.indexOf(filter) >= 0) {
+				gameVisible = true;
+			}
+			
+			//ищем по жанрам
+			if (gameVisible) {
+				if (selectedGenresForFilter.length > 0) {
+					for (var tag of selectedGenresForFilter) {
+						if (genres.indexOf(tag) < 0) {
+							gameVisible = false;
+						}
+					}
+				}
+			}
+		
+			if (gameVisible) {
+				game.show();
+				visibleGameCounter++;
+			}
+			else
+				game.hide();
+		});
+		
+		if (visibleGameCounter <= 0)
+			$('div#try_utilities_block').show();
+		else
+			$('div#try_utilities_block').hide();
+	}
 	
-	if (visibleGameCounter == 0 && filter.length > 0)
-		$('div#try_utilities_block').show();
-	else
-		$('div#try_utilities_block').hide();
-  });
-  
+	$("#button_clear_genres").click(function () {
+		$('div#genre_filter input:checkbox').each(function () {
+			$(this).prop("checked", false);
+		});
+		filterGames();
+	});
+
 	$("#button_hide_images").click(function () {
 		$(this).hide();
 		$("#button_show_images").show();

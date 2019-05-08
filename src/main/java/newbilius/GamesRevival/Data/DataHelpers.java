@@ -32,4 +32,12 @@ public class DataHelpers {
                 .distinct()
                 .toArray(String[]::new);
     }
+
+    public String[] getGenres() {
+        return Games
+                .stream()
+                .flatMap(game -> Arrays.stream(game.Genre).sorted())
+                .distinct()
+                .toArray(String[]::new);
+    }
 }
