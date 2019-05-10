@@ -2,7 +2,7 @@ package newbilius.GamesRevival.Generators;
 
 import newbilius.GamesRevival.FileHelper;
 import newbilius.GamesRevival.FoldersConfig;
-import newbilius.GamesRevival.GeneratorsInfastructure.BasePagesGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.BasePagesGenerator;
 
 import java.io.IOException;
 

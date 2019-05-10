@@ -3,8 +3,8 @@ package newbilius.GamesRevival.Generators;
 import newbilius.GamesRevival.Data.DataHelpers;
 import newbilius.GamesRevival.Data.Game;
 import newbilius.GamesRevival.FoldersConfig;
-import newbilius.GamesRevival.GeneratorsInfastructure.BaseOnePageGenerator;
-import newbilius.GamesRevival.GeneratorsInfastructure.RelativePathHelper;
+import newbilius.GamesRevival.GeneratorsInfrastructure.BaseOnePageGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.RelativePathHelper;
 import newbilius.GamesRevival.HTML.Breadcrumbs.MainBreadcrumbGenerator;
 
 import java.io.IOException;

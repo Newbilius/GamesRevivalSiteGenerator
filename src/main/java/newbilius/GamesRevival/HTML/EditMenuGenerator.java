@@ -1,6 +1,6 @@
 package newbilius.GamesRevival.HTML;
 
-import newbilius.GamesRevival.GeneratorsInfastructure.RelativePathHelper;
+import newbilius.GamesRevival.GeneratorsInfrastructure.RelativePathHelper;
 
 public class EditMenuGenerator {
     public static String getBlock(String fileName) {

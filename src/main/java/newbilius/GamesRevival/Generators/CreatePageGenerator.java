@@ -2,7 +2,7 @@ package newbilius.GamesRevival.Generators;
 
 import newbilius.GamesRevival.FileHelper;
 import newbilius.GamesRevival.FoldersConfig;
-import newbilius.GamesRevival.GeneratorsInfastructure.BaseOnePageGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.BaseOnePageGenerator;
 import newbilius.GamesRevival.Data.DataHelpers;
 import newbilius.GamesRevival.HTML.Breadcrumbs.MainBreadcrumbGenerator;
 

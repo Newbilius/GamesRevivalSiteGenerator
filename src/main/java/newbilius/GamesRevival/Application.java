@@ -3,7 +3,7 @@ package newbilius.GamesRevival;
 import newbilius.GamesRevival.CommandLineArgumentsParser.CMDParserOption;
 import newbilius.GamesRevival.CommandLineArgumentsParser.CommandLineArgumentsParser;
 import newbilius.GamesRevival.CommandLineArgumentsParser.CommandLineArgumentsParserResult;
-import newbilius.GamesRevival.GeneratorsInfastructure.ISiteGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.ISiteGenerator;
 import org.reflections.Reflections;
 
 import java.lang.reflect.Modifier;

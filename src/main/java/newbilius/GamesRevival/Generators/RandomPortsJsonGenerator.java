@@ -3,8 +3,8 @@ package newbilius.GamesRevival.Generators;
 import com.google.gson.Gson;
 import newbilius.GamesRevival.FileHelper;
 import newbilius.GamesRevival.FoldersConfig;
-import newbilius.GamesRevival.GeneratorsInfastructure.BasePagesGenerator;
-import newbilius.GamesRevival.GeneratorsInfastructure.RelativePathHelper;
+import newbilius.GamesRevival.GeneratorsInfrastructure.BasePagesGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.RelativePathHelper;
 import newbilius.GamesRevival.HTML.PortScreensHTMLGenerator;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package newbilius.GamesRevival.GeneratorsInfastructure;
+package newbilius.GamesRevival.GeneratorsInfrastructure;
 
 import newbilius.GamesRevival.Data.Game;
 import newbilius.GamesRevival.Data.Port;

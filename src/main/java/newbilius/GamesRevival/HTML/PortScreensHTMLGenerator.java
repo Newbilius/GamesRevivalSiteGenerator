@@ -1,7 +1,7 @@
 package newbilius.GamesRevival.HTML;
 
 import newbilius.GamesRevival.Data.Port;
-import newbilius.GamesRevival.GeneratorsInfastructure.RelativePathHelper;
+import newbilius.GamesRevival.GeneratorsInfrastructure.RelativePathHelper;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

@@ -1,7 +1,7 @@
 package newbilius.GamesRevival.Generators;
 
 import newbilius.GamesRevival.FoldersConfig;
-import newbilius.GamesRevival.GeneratorsInfastructure.BaseOnePageGenerator;
+import newbilius.GamesRevival.GeneratorsInfrastructure.BaseOnePageGenerator;
 import newbilius.GamesRevival.HTML.Breadcrumbs.MainBreadcrumbGenerator;
 
 import java.io.IOException;
