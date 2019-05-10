@@ -7,7 +7,7 @@ public class EditMenuGenerator {
         var path = RelativePathHelper.getEditUrl(fileName);
 
         return String.format("<br>\n" +
-                        "<div class=\"card w-50\">\n" +
+                        "<div class=\"card\">\n" +
                         "<div class=\"card-header\">\n" +
                         "<a href='%s' style=\"font-size:0.8em !important;display: inline-block;float: left;\">Редактировать страницу</a>\n" +
                         "</div>\n" +
