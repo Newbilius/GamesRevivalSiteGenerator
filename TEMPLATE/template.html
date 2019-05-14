@@ -207,7 +207,7 @@ $(document).ready(function () {
 	 
 	 $.get( "/updates.html?timestamps="+Date.now(), function( data ) {
 	   var lastCommentsBlock = $('#last_updates');
-	   lastCommentsBlock.html(data);
+	   lastCommentsBlock.html(data.replace("(GamesRevivalBot)","(посетитель сайта)"));
 	   lastCommentsBlock.show();
 	   $('#last_updates_loading_animation').hide();
 	 });
