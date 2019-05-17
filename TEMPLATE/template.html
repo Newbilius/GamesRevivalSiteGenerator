@@ -205,9 +205,13 @@ $(document).ready(function () {
 	   $('#last_comments_loading_animation').hide();
 	 });
 	 
+	String.prototype.replaceAll = function(search, replace){
+	  return this.split(search).join(replace);
+	}
+	 
 	 $.get( "/updates.html?timestamps="+Date.now(), function( data ) {
 	   var lastCommentsBlock = $('#last_updates');
-	   lastCommentsBlock.html(data.replace("(GamesRevivalBot)","(посетитель сайта)"));
+	   lastCommentsBlock.html(data.replaceAll("(GamesRevivalBot)","(посетитель сайта)"));
 	   lastCommentsBlock.show();
 	   $('#last_updates_loading_animation').hide();
 	 });
