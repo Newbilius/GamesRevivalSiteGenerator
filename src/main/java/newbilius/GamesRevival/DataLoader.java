@@ -36,6 +36,16 @@ class DataLoader {
             Games.add(game);
         }
 
+        var gamesWithEmptyTitle = Games.stream()
+                .filter(x -> x.Title == null || x.Title.length == 0)
+                .toArray(Game[]::new);
+
+        for (var gameWithEmptyTitle :
+                gamesWithEmptyTitle) {
+            Helpers.print("!!!!! ERROR! GAME FOLDER WITH EMPTY TITLE " + gameWithEmptyTitle.Path);
+            Games.remove(gameWithEmptyTitle);
+        }
+
         for (var game : Games)
             game.Ports.sort(Comparator.comparing(o -> o.Title));
         Games.sort(Comparator.comparing(o -> o.Title[0]));
