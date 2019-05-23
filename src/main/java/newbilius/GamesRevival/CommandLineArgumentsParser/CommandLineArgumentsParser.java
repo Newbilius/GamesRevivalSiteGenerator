@@ -2,9 +2,15 @@ package newbilius.GamesRevival.CommandLineArgumentsParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CommandLineArgumentsParser {
-    private ArrayList<CMDParserOption> options = new ArrayList<>();
+    private List<CMDParserOption> options = new ArrayList<>();
+
+    private static boolean isAnyEqualsIgnoreCase(String text, String... matchedTexts) {
+        return Arrays.stream(matchedTexts)
+                .anyMatch(text::equalsIgnoreCase);
+    }
 
     public void addOption(CMDParserOption option) {
         options.add(option);
@@ -20,60 +26,56 @@ public class CommandLineArgumentsParser {
         }
 
         for (var i = 0; i < args.length; i++) {
-            var arg = args[i].toLowerCase().trim();
+            var arg = args[i].trim();
             var commandOptional = options.stream()
-                    .filter(x -> ("-" + x.param.toLowerCase()).equals(arg)
-                            || ("--" + x.param.toLowerCase()).equals(arg))
+                    .filter(x -> isAnyEqualsIgnoreCase(arg, "-" + x.param, "--" + x.param))
                     .findFirst();
 
-            if (!commandOptional.isPresent()) {
+            if (commandOptional.isEmpty()) {
                 result.addError(getUnknownOptionExceptionText(arg));
                 continue;
             }
 
             var command = commandOptional.get();
             if (command.withArgs) {
-                if (i + 1 >= args.length)
+                if (i + 1 >= args.length || args[i + 1].startsWith("-")) {
                     result.addError(notSettedParamOfOptionExceptionText(arg));
-                var argParam = args[i + 1];
-                if (argParam.startsWith("-"))
-                    result.addError(notSettedParamOfOptionExceptionText(arg));
-                i++;
-                result.addOption(command.param, argParam);
+                } else {
+                    i++;
+                    result.addOption(command.param, args[i]);
+                }
             } else {
                 result.addOption(command.param);
             }
         }
 
-        for (var option : options)
-            if (option.required && !result.haveValue(option))
+        for (var option : options) {
+            if (option.required && !result.haveValue(option)) {
                 result.addError(notSettedRequiredParamExceptionText(option.param));
+            }
+        }
 
         return result;
     }
 
     private String exitIfOnlyHelpParam(String[] args) {
-        if (Arrays.stream(args)
-                .anyMatch(s -> s.contains("-help")
-                        || s.contains("-h")
-                        || s.contains("-?")))
+        var containsHelpArgument = Arrays.stream(args)
+                .map(String::trim)
+                .anyMatch(s -> isAnyEqualsIgnoreCase(s, "-?", "-h", "-help"));
+        if (containsHelpArgument)
             return helpExceptionText();
 
-        if (args.length == 1
-                && (args[0].equals("?")
-                || args[0].equals("h")
-                || args[0].contains("help")))
+        if (args.length == 1 && isAnyEqualsIgnoreCase(args[0], "?", "h", "help"))
             return helpExceptionText();
 
-        if (args.length == 0)
-            return helpExceptionText();
         return null;
     }
 
     public void printHelp() {
         printHelpHeader();
-        for (var option : options)
+        for (var option : options) {
             System.out.println(getHelpTextLine(option));
+        }
     }
 
     //выделены для потенциальной локализации

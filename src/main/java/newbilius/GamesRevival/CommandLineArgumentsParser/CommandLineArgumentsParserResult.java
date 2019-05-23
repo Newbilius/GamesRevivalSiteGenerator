@@ -2,10 +2,12 @@ package newbilius.GamesRevival.CommandLineArgumentsParser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CommandLineArgumentsParserResult {
-    private HashMap<String, String> options = new HashMap<>();
-    private ArrayList<String> errors = new ArrayList<>();
+    private Map<String, String> options = new HashMap<>();
+    private List<String> errors = new ArrayList<>();
 
     public boolean haveError() {
         return !errors.isEmpty();
@@ -32,9 +34,8 @@ public class CommandLineArgumentsParserResult {
     }
 
     public boolean getBoolean(CMDParserOption option, boolean defaultValue) {
-        if (options.containsKey(option.param))
-            return Boolean.parseBoolean(options.get(option.param));
-        return defaultValue;
+        String value;
+        return (value = options.get(option.param)) != null ? Boolean.parseBoolean(value) : defaultValue;
     }
 
     public String getString(CMDParserOption option, String defaultValue) {
@@ -42,8 +43,7 @@ public class CommandLineArgumentsParserResult {
     }
 
     public int getInt(CMDParserOption option, int defaultValue) {
-        if (options.containsKey(option.param))
-            return Integer.parseInt(options.get(option.param));
-        return defaultValue;
+        String value;
+        return (value = options.get(option.param)) != null ? Integer.parseInt(value) : defaultValue;
     }
 }
