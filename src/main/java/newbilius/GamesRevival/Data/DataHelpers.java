@@ -36,8 +36,9 @@ public class DataHelpers {
     public String[] getGenres() {
         return Games
                 .stream()
-                .flatMap(game -> Arrays.stream(game.Genre).sorted())
+                .flatMap(game -> Arrays.stream(game.Genre))
                 .distinct()
+                .sorted()
                 .toArray(String[]::new);
     }
 }

@@ -116,6 +116,9 @@ class DataLoader {
         game.Genre = FileHelper.getFileLines(gameFullDir + "/genre.txt");
         game.LogoPath = FileHelper.getPathIfFileExists(gameFullDir + "/logo.jpg");
         game.Ports = new ArrayList<>(1);
+
+        Arrays.sort(game.Genre, String::compareToIgnoreCase);
+
         return game;
     }
 }
