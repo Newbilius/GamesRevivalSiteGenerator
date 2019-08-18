@@ -24,6 +24,11 @@ class DataLoader {
         for (var gameDir : gameDirs) {
             var game = GetGameData(gameDir);
 
+            if (game.Title.length == 0) {
+                Helpers.print("ERROR! GAME FOLDER WITH EMPTY TITLE " + game.Path);
+                continue;
+            }
+
             var gameFolder = foldersConfig.getInputFolder() + gameDir;
             Helpers.print("load data from GAME folder " + gameFolder);
             var portsDirs = FileHelper.getDirsList(gameFolder);
@@ -34,16 +39,6 @@ class DataLoader {
             }
 
             Games.add(game);
-        }
-
-        var gamesWithEmptyTitle = Games.stream()
-                .filter(x -> x.Title == null || x.Title.length == 0)
-                .toArray(Game[]::new);
-
-        for (var gameWithEmptyTitle :
-                gamesWithEmptyTitle) {
-            Helpers.print("!!!!! ERROR! GAME FOLDER WITH EMPTY TITLE " + gameWithEmptyTitle.Path);
-            Games.remove(gameWithEmptyTitle);
         }
 
         for (var game : Games)
